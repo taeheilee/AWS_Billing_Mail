@@ -5,6 +5,7 @@ AWS boto3 자격증명, api를 사용해서 비용을 조회 후 이메일로 �
 설치 패키지 
 - pip install boto3
 - pip install awscli
+- pip install pandas
 
 발송, 수신 이메일의 경우 SES 리소스에서 이메일 인증이 둘 다 되어야 가능 
 
