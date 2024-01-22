@@ -9,8 +9,25 @@ access_key=''
 secret_key=''
 region=''
 
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# 필요한 패키지 목록
+required_packages = ['json', 'boto3', 'pandas']
+
+
 def main():
-     # AWS의 Cost Explorer 서비스를 사용하기 위해 boto3.client('ce', ...)를 사용하여 클라이언트를 생성
+
+    # 패키지 설치 함수 호출
+    for package in required_packages:
+    install(package)
+
+    import boto3
+    from botocore.exceptions import ClientError
+    import pandas as pd
+
+     
+    # AWS의 Cost Explorer 서비스를 사용하기 위해 boto3.client('ce', ...)를 사용하여 클라이언트를 생성
     billing_client = boto3.client('ce',
                                   aws_access_key_id=access_key,
                                   aws_secret_access_key=secret_key)
@@ -356,5 +373,3 @@ def main():
         )
          
         print(response)
-
-main()
