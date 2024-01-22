@@ -1,8 +1,5 @@
 import json
-import boto3
 import datetime
-from botocore.exceptions import ClientError
-import pandas as pd
 # 라이브러리 및 AWS 자격 증명 설정: 코드의 첫 부분에서는 필요한 라이브러리를 가져오고, AWS 자격 증명 (액세스 키, 시크릿 키) 및 리전을 설정
 
 access_key=''
@@ -16,7 +13,7 @@ def install(package):
 required_packages = ['json', 'boto3', 'pandas']
 
 
-def main():
+def main(self):
 
     # 패키지 설치 함수 호출
     for package in required_packages:
