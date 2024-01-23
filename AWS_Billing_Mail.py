@@ -1,5 +1,7 @@
 import json
 import datetime
+import subprocess
+import sys
 # 라이브러리 및 AWS 자격 증명 설정: 코드의 첫 부분에서는 필요한 라이브러리를 가져오고, AWS 자격 증명 (액세스 키, 시크릿 키) 및 리전을 설정
 
 access_key=''
@@ -10,14 +12,14 @@ def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 # 필요한 패키지 목록
-required_packages = ['json', 'boto3', 'pandas']
+required_packages = ['boto3', 'pandas', 'awscli']
 
 
 def main(self):
 
     # 패키지 설치 함수 호출
     for package in required_packages:
-    install(package)
+      install(package)
 
     import boto3
     from botocore.exceptions import ClientError
@@ -153,15 +155,15 @@ def main(self):
                               aws_secret_access_key=secret_key)
      
     message = {
-        'Subject': {'Data': 'AWS training account cost report'},
+        'Subject': {'Data': 'AWS account cost report'},
         'Body': {'Html': {'Data': html}}
     }
      
     
     try:
       response = ses_client.send_email(
-        Source="sender@mail.com",
-        Destination={'ToAddresses': ["receiver@mail.com"]},
+        Source="sender@example.com",
+        Destination={'ToAddresses': ["Recipient@example.com"]},
         Message=message
     )
       print("이메일 발송 성공! 메시지 ID:", response['MessageId'])
@@ -359,13 +361,13 @@ def main(self):
                                   aws_secret_access_key=secret_key)
          
         message = {
-            'Subject': {'Data': 'AWS training account cost report'},
+            'Subject': {'Data': 'AWS account cost report'},
             'Body': {'Html': {'Data': html}}
         }
          
         response = ses_client.send_email(
-            Source='sender@mail.com',
-            Destination={'ToAddresses': [ 'receiver@mail.com']},
+            Source='sender@example.com',
+            Destination={'ToAddresses': [ 'Recipient@example.com']},
             Message=message
         )
          
